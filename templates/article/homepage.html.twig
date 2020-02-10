@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <!-- Article List -->
+
+            <div class="col-sm-12 col-md-8">
+
+                <!-- H1 Article -->
+                <a class="main-article-link" href="#">
+                    <div class="main-article mb-5 pb-3">
+                        <img src="{{ asset('images/meteor-shower.jpg') }}" alt="meteor shower">
+                        <h1 class="text-center mt-2">Ursid Meteor Shower: <br>Healthier than a regular shower?</h1>
+                    </div>
+                </a>
+
+                <!-- Supporting Articles -->
+                {% for article in articles %}
+                <div class="article-container my-1">
+                    <a href="{{ path('article_show', {slug: article.slug}) }}">
+                        <img class="article-img" src="{{ asset(article.imagePath) }}">
+                        <div class="article-title d-inline-block pl-3 align-middle">
+                            <span>{{ article.title }}</span>
+                            <br>
+                            <span class="align-left article-details"><img class="article-author-img rounded-circle" src="{{ asset('images/alien-profile.png') }}"> {{ article.author }} </span>
+                            <span class="pl-5 article-details float-right">
+                                {{ article.publishedAt ? article.publishedAt|ago  }}
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+
+
+
+
+
+            </div>
+
+            <!-- Right bar ad space -->
+
+
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,124 @@
+
+
+./bin/console composer update symfony:maker-bundle
+
+php composer require security
+
+./bin/console make:user
+
+./bin/console make:fixtures
+
+./bin/console make:controller
+
+./bin/console make:auth  ==> create authenticator
+
+LoginFormAuthenticator
+
+./bin/console debug:container --parameters : elle affiche la liste de differente kernel dans container
+
+exemple: kernel.debug,kernel.environment
+
+ici on liste kernel.secret sont type %env(APP_SECRET)% ==> c'est un variable d'environement
+
+./bin/console debug:router
+
+./bin/console make:controller
+
+app est une variable globale pour twig exemple app.user, app.message ..
+
+http://localhost:8000/admin/comment?_switch_user=spacebar0@example.com
+
+http://localhost:8000/account?_switch_user=_exit
+
+php composer require serializer
+
+php annotation pluguin + PhpStorm
+
+RQ: Example relation manyToOne entre user et apitoken:
+https://symfonycasts.com/screencast/symfony-security/api-token-entity#play
+
+ $apiToken1 = new ApiToken($user); car on a initialiser $user dans constructeur de la classe ApiToken
+
+ ./bin/console make:auth
+
+  ./bin/console doctrine:schema:drop --full-database --force
+
+  ./bin/console make:voter
+
+  php composer require form
+
+php composer require validator
+
+novalidate ==> pour  eleminer les validator du navigateur
+
+----------------------------Remarque:---------------------------------------------
+
+si j'ai un champ agreedTermsAt de type DateTime et non null
+
+si je fait ./bin/console doctrine:migration:migrate j'aurai une erreur de  ce type
+
+Invalide DateTime format:--- Incorrect datetime value: '000-00-00:00:00:0'
+
+solution : dans le fichier de migration il faut modifier la contrainte NotNull a DEFAULT NULL
+
+et
+
+$this->addsql('update user set agreed_terms_at=NOW()')
+ en suite exécuter doctrine:migration:migrate
+ en suite make:migration
+ enfin doctrine:migration:migrate
+
+--------------------------------------------------------------------------------------
+
+PhpStorm : ctrl + O
+
+            ctrl + i
+
+--------------------------- algolia autocomplete ---------------------------------------------------------------------------
+
+https://github.com/algolia/autocomplete.js/blob/master/README.md
+
+-----------------------------Serialisation-------------
+
+ ['groups'=> ['main']]// serialisation
+
+ -----------------------------------------------------
+
+
+./bin/console debug:autowiring rout
+
+./bin/console make:validator
+
+
+
+
+fetch="EXTRA_LAZY" ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

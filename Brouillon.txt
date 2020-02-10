@@ -1,0 +1,107 @@
+
+
+composer require doctrine
+
+./bin/console doctrine:database:drop --force
+
+./bin/console doctrine:database:create
+
+./bin/console debug:autowiring     ==>liste des services
+
+./bin/console config:container --show -private
+
+./bin/console make:entity pour crer une entité
+
+./bin/console make:migration
+
+./bin/console doctrine:migration:migrate
+
+./bin/console doctrine:migration:status
+
+./bin/console doctrine:query:sql "SELECT * FROM article "
+
+./bin/console make:twig-extension pour cerrer des extension twig pour le filtre
+
+
+Ubdate  Entity
+--------------
+
+./bin/console make:entity
+
+-> Article ( nom entity)
+
+-> ajouter les fields
+
+
+purge database + sql query
+--------------------------
+
+doctrine:query:sql ' TRUNCATE TABLE article '
+
+-----------------fixtures---------------
+
+php composer require orm-fixtures --dev
+
+-generate fixtures: ./bin/console make:fixtures,  > Article:Fixtures(exmple)
+
+./bin/console doctrine:fixtures:load
+
+RQ Importante: ObjectManager est une Interface implementer par entityManager
+
+------------------callable------------------------
+
+exemple:
+
+protected function createMany(string $ClassName,int $count, callable $factory)
+     ...............
+      ..............
+
+      $factory($entity,$i); ==> function($article,$count)
+
+--> $this->createMany(Article::class,10, function($article,$count))
+
+
+
+---------------------Faker bundle------------------
+
+php composer require fzaninotto/faker --dev
+
+---------------------Stof doctrine extensions bundle------------------
+
+php composer require stof/doctrine-extensions-bundle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
